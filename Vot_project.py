@@ -24,6 +24,8 @@
 
 import tkinter as tk
 
+
+
 def print_text():
     text = entry.get()
     print(text)
@@ -31,6 +33,7 @@ def print_text():
 root = tk.Tk()
 root.title("Vot project")
 root.config(bg = 'yellow')
+root.geometry("350x275")
 
 
 lable = tk.Label(root,text="You must paste the link here!",padx= 40, pady= 20,anchor= "center", font=("Arial", 25),bg='yellow')
@@ -39,10 +42,14 @@ lable.pack()
 
 
 entry = tk.Entry(root,width=50,font=("Arial", 15),justify='center')
-entry.pack(padx=10, pady=10)
+entry.pack()
 
-button = tk.Button(root, text="Print Text", command=print_text,padx= 20,pady=10)
-button.pack()
+ImageButton = tk.Button(root, text="Image", command=print_text,padx= 72,pady=30,fg='red',bg='green',anchor='center')
+ImageButton.place(relx=0.2, rely=0.5, anchor='center')
+TextButton = tk.Button(root, text="Text", command=print_text,padx= 72,pady=30,fg='red',bg='green',anchor='center')
+TextButton.place(relx=0.5, rely=0.5, anchor='center') 
+LinksButton = tk.Button(root, text="Links", command=print_text,padx= 72,pady=30,fg='red',bg='green',anchor='center')
+LinksButton.place(relx=0.8, rely=0.5, anchor='center') 
 
 lable = tk.Label(root,text="When you press the button, image must be download in our website!",padx= 40, pady= 20,anchor= "center", font=("Arial", 20),bg='yellow')
 lable.pack()
