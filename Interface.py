@@ -31,11 +31,12 @@ from tkinter import ttk
 
 #check
 def is_string_an_url(url_string):
-    res = requests.get(url_string)
-    if res.status_code == 200:
-        return True
-    else:
-        return False
+    try:
+        res = requests.get(url_string)
+        return res
+    except:
+        print('Not a link')
+        return ''
 
 def is_url_image(image_url):
    image_formats = ("image/png", "image/jpeg", "image/jpg")
@@ -43,7 +44,6 @@ def is_url_image(image_url):
    if r.headers["content-type"] in image_formats:
       return True
    return False
-
 
 
 #IMAGES:
@@ -126,21 +126,17 @@ def get_links(url):
 
 def print_text():
     url = entry.get()
-    if is_string_an_url(url) == True:
+    if is_string_an_url(url) != '':
         print(get_text(url))
-    else:
-        print("This is not url")
     
 def print_links():
     url = entry.get()
-    if is_string_an_url(url) == True:
+    if is_string_an_url(url) != '':
         print(get_links(url))
-    else:
-        print("This is not url")
 
 def print_image():
     url = entry.get()
-    if is_string_an_url(url) == True and is_url_image(url) == True:
+    if is_string_an_url(url) != '' and is_url_image(url) == True:
         download_all_imgs(url)
     else:
         print("This is not a image")
