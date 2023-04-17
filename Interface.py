@@ -1,28 +1,3 @@
-#from tkinter import *
-#import tkinter as tk
-
-#root = tk.Tk()
-
-#root.title("Vot project")
-
-#label1 = tk.Label(root, text= "Paste the link in the box!",font=('Arial',18))
-
-#textbox = tk.Text(root,height=1, font=('Arial',20))
-#textbox.pack(padx=20)
-
-#def myClick():
-    #label2 = Label(root,text="You clicked a button")
-    #label2.pack()
-
-
-#button = Button(root,text= "Download",padx= 50,pady= 30,command=myClick)
-#button.pack()
-
-
-#root.mainloop()
-
-
-
 import requests # request img from web
 import shutil # save img locally
 from bs4 import BeautifulSoup # parse html
@@ -86,24 +61,6 @@ def get_text(url):
     return soup.get_text()
     
     
-    # Print the body content in list form
-    # print(soup.body.contents[0])
-    # Print the first found div on html page
-    # print(soup.find('div'))
-    # Print the all divs on html page in list form
-    # print(soup.find_all('div'))
-    # Print the element with 'required_element_id' id
-    # print(soup.find(id='required_element_id'))
-    # Print the all html elements in list form that matches the selectors
-    # print(soup.select(required_css_selectors))
-    # Print the attribute value in list form
-    # print(soup.find(id='someid').get("attribute-name"))
-    # You can also break your one large query into multiple queries
-    # parent = soup.find(id='someid')
-    # getText() return the text between opening and closing tag
-    # print(parent.select(".some-class")[0].getText())
-
-    
 #LINKS:
 def get_links(url):
     all_links = []
@@ -122,17 +79,17 @@ def get_links(url):
     return all_links
 
 
-
-
 def print_text():
     url = entry.get()
     if is_string_an_url(url) != '':
         print(get_text(url))
+  
     
 def print_links():
     url = entry.get()
     if is_string_an_url(url) != '':
         print(get_links(url))
+
 
 def print_image():
     url = entry.get()
@@ -141,13 +98,16 @@ def print_image():
     else:
         print("This is not a image")
 
+
 root = Tk()
 root.title("Vot project")
 root.config(bg = 'yellow')
 root.geometry("500x500")
 
+
 style = ttk.Style()
 style.theme_use("default")
+
 
 style.configure('elder.TButton', 
                 foreground = "white",
@@ -155,13 +115,14 @@ style.configure('elder.TButton',
                 font =("Arial",18),
                 padding=[10,10,10,10])
 
+
 style.map('elder.TButton', 
           background=[('active', '#004ea5')]
         )
 
+
 lable = Label(root,text="You must paste the link here!",padx= 40, pady= 20,anchor= "center", font=("Arial", 25),bg='yellow')
 lable.pack()
-
 
 
 entry = Entry(root,width=50,font=("Arial", 15),justify='center')
